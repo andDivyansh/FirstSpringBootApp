@@ -1,12 +1,14 @@
 package com.divyansh.demo.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
 import java.util.List;
 
 @Entity(name = "speakers")
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Speaker {
 
     public Speaker() {}
@@ -30,6 +32,7 @@ public class Speaker {
     private byte[] speakerPhoto;
 
     @ManyToMany(mappedBy = "speakerList")
+    // To ignore the back serialisation to speakers
     @JsonIgnore
     private List<Session> sessions;
 

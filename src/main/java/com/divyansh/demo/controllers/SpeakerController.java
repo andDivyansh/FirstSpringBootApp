@@ -19,7 +19,7 @@ public class SpeakerController {
     public List<Speaker> getAllSpeakers() { return speakerRepo.findAll();}
 
     @GetMapping
-    @RequestMapping
+    @RequestMapping("{id}")
     public Speaker getId(@PathVariable Long id){
         return speakerRepo.getOne(id);
     }
